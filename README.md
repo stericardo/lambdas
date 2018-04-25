@@ -23,6 +23,8 @@ The idea is to provide a repo with several functionalities about lambdas
 
 ### Run
 • lambdas-run
+
 • gradle clean build
+
 • ${workspace_loc:/lambdas}
 
