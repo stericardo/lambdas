@@ -29,5 +29,5 @@ task runApp(type: JavaExec) {
 
   main = mainClassName
 
-  args 'test', 'test 2'
+  args '1', 'Param2'
 }
