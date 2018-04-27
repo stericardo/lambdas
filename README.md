@@ -33,7 +33,35 @@ The idea is to provide a repo with several functionalities about lambdas
 ### Functional paradigm
 1. Create concise programs
 2. Easy to parallelize
-3. External interaction (What do I need to do, but not as I can achieve it)
+3. External interaction (it shows: What do I need to do, but not as I can achieve it)
+
+### Functional Interface
+The idea is to have a only one abstract method, the interface can have more than one default method but only abstract.
+
+```
+public interface IStevenHello {
+    
+    public String sayHello(String name);
+    
+    public default String sayHelloWord(){
+        return "Hello word";
+    }
+}
+```
+
+Now we can create implementation:
+
+```
+public class StevenHelloApplication {
+    public static void main(String[] args) {
+        IStevenHello hello = (name) -> "Our Implementation " + name;
+        
+        System.out.println(strategy.sayHelloTo("Steven HW!!!"));
+        System.out.println(strategy.sayHelloWord());
+    }
+}
+```
+
 
 ## Dive into
 The first thing that you need to know is about syntax of lambda expression:
@@ -57,5 +85,10 @@ Then for recap we have:
 
 ## Streams
 Similar to a Iterators, Streams implements java.util.stream, along with Lambdas they allow several tasks on collection elements
+
+## for Each
+The method receives on object that implements functional Interface IntConsumer.
+
+
 
 

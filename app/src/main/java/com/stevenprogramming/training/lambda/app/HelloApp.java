@@ -14,6 +14,8 @@ public class HelloApp {
 				int option = Integer.parseInt(args[0]);
 				Builder builder = BuilderImpl.getInstance();
 				builder.build(option);
+				System.out.println("***********************************************************");
+				builder.build(2);
 			}
 		} catch (NumberFormatException nFE) {
 			System.out.println("Error >>> " + nFE.toString());

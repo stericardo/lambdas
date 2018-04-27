@@ -1,14 +1,20 @@
 package com.stevenprogramming.training.lambda.core.sample;
 
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import com.stevenprogramming.training.lambda.core.Execute;
 
 public class SampleIntStream implements Execute{
 
+	public void printValuesInstStream(Stream values) {
+		System.out.println("Values IntStream>>>>");
+		values.forEach(valor -> System.out.printf("%d::", valor));
+	}
+	
 	public void printValues(int[] values) {
 		System.out.println("Values >>>>");
-		IntStream.of(values).forEach(valor -> System.out.printf("%d", valor));
+		IntStream.of(values).forEach(valor -> System.out.printf("%d::", valor));
 	}
 	
 	public void printCount(int[] values) {
@@ -34,12 +40,14 @@ public class SampleIntStream implements Execute{
 	@Override
 	public void execute() {
 		int[] values = {1,11,16,3,4,8,2,5,19,21};
+		printValuesInstStream(IntStream.range(0, 20).boxed());
 		printValues(values);
 		printCount(values);
 		printMin(values);
 		printMax(values);
 		printSum(values);
 		printAverage(values);
+		
 	}
 
 }

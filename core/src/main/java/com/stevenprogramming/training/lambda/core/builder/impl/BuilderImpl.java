@@ -2,6 +2,7 @@ package com.stevenprogramming.training.lambda.core.builder.impl;
 
 import com.stevenprogramming.training.lambda.core.Executer;
 import com.stevenprogramming.training.lambda.core.builder.Builder;
+import com.stevenprogramming.training.lambda.core.sample.SampleFunctionalInterface;
 import com.stevenprogramming.training.lambda.core.sample.SampleIntStream;
 
 /**
@@ -31,11 +32,20 @@ public class BuilderImpl implements Builder{
 	public void build(int type) {
 		switch(type){
 		case 1: 
+			printBuilderImpl(SampleIntStream.class.getName());
 			Executer.getInstance().exec(new SampleIntStream());
+			break;
+		case 2: 
+			printBuilderImpl(SampleFunctionalInterface.class.getName());
+			Executer.getInstance().exec(new SampleFunctionalInterface());
 			break;
 			default: return;
 		}
 		
+	}
+	
+	private void printBuilderImpl(String name) {
+		System.out.println("Class Implementation >> " + name);
 	}
 
 }
