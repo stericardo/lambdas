@@ -56,12 +56,11 @@ public class StevenHelloApplication {
     public static void main(String[] args) {
         IStevenHello hello = (name) -> "Our Implementation " + name;
         
-        System.out.println(strategy.sayHelloTo("Steven HW!!!"));
+        System.out.println(strategy.sayHello("Steven HW!!!"));
         System.out.println(strategy.sayHelloWord());
     }
 }
 ```
-
 
 ## Dive into
 The first thing that you need to know is about syntax of lambda expression:
@@ -86,8 +85,9 @@ Then for recap we have:
 ## Streams
 Similar to a Iterators, Streams implements java.util.stream, along with Lambdas they allow several tasks on collection elements
 
-## for Each
+## forEach IntStream
 The method receives on object that implements functional Interface IntConsumer.
+>  void forEach(IntConsumer action);
 
 
 
