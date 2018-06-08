@@ -11,17 +11,29 @@ dependencies {
 }
 
 jar {
-		from {
+		/*from {
         	(configurations.runtime).collect {
             	it.isDirectory() ? it : zipTree(it)
         	}
-    	}
-   		baseName = 'Steven-MB-Library'
-    	manifest {
+    	}*/
+		//from configurations.runtime
+		//into 'build/libs' If you enable this jar file could save internal folders for jar and all configurations
+   		baseName = 'Steven-Lambdas-Training'
+    	/*manifest {
         	attributes 'Implementation-Title': 'Steven Ricardo Mendez Brenes, Lambda training',
                    'Implementation-Version': version,
                    'Main-Class': 'com.stevenprogramming.training.lambda.app.HelloApp'
-		}
+		}*/
+	manifest {
+		attributes "Implementation-Title": "Steven Ricardo Mendez Brenes, Lambda training"
+		attributes "Main-Class": "com.stevenprogramming.training.lambda.app.HelloApp"
+		attributes "Class-Path": configurations.runtimeClasspath.files.collect { 'lib/' + it.getName() }.join(' ')
+	}
+}
+
+task copyDeps(type: Copy) {
+	from configurations.runtime
+	into 'build/libs/lib'
 }
 
 task runApp(type: JavaExec) {
@@ -30,4 +42,5 @@ task runApp(type: JavaExec) {
   main = mainClassName
 
   args '1', 'Param2'
+
 }
