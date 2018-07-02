@@ -1,26 +1,28 @@
 package com.stevenprogramming.training.lambda.app;
 
+import com.stevenprogramming.training.lambda.app.aop.Profiler;
 import com.stevenprogramming.training.lambda.core.HelloCore;
 import com.stevenprogramming.training.lambda.core.builder.Builder;
 import com.stevenprogramming.training.lambda.core.builder.impl.BuilderImpl;
+import com.stevenprogramming.training.lambda.core.sample.interfaces.LogDurationTime;
+import com.stevenprogramming.training.lambda.core.services.IRunService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
+
+import java.util.Optional;
+
+@SpringBootApplication
+@ComponentScan({"com.stevenprogramming.training"})
+@LogDurationTime
 public class HelloApp {
 
 	public static void main(String[] args) {
-		HelloCore helloCore = new HelloCore();
-		System.out.println(helloCore.getGreeting("Steven From App to Core " + args[0]));
-		try {
-			if (null != args[0]) {
-				int option = Integer.parseInt(args[0]);
-				Builder builder = BuilderImpl.getInstance();
-				builder.build(option);
-				System.out.println("***********************************************************");
-				builder.build(2);
-			}
-		} catch (NumberFormatException nFE) {
-			System.out.println("Error >>> " + nFE.toString());
-			nFE.printStackTrace();
-		}
-
+		ApplicationContext applicationContext = SpringApplication.run(HelloApp.class, args);
+		IRunService iRunService = (IRunService) applicationContext.getBean("runService");
+		iRunService.runApp(args[0]);
 	}
 }

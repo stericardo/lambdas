@@ -1,21 +1,26 @@
-allprojects {
-  //Put instructions for all projects
-  
-  
-  
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+	}
 }
 subprojects {
-    apply plugin: 'java'
+	apply plugin: 'java'
 	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	bootJar {
+		baseName = 'gs-spring-boot'
+		version =  '0.1.0'
+	}
 	
 	 configurations {
         provided
     }
-	
-	eclipse {
-            classpath { plusConfigurations += configurations.provided 
-            }
-        }
 
     repositories {
         mavenCentral()
@@ -37,6 +42,8 @@ subprojects {
 		}
     
     dependencies {
+		compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.6.10'
+		compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.3.RELEASE'
         testCompile 'junit:junit:4.12'
     }
 

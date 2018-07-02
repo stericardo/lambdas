@@ -4,10 +4,10 @@ apply plugin: 'java'
 mainClassName = 'com.stevenprogramming.training.lambda.app.HelloApp'
 
 dependencies {
-	  compile files(fileTree(dir: 'lib', includes: ['*.jar']))
-      compile project(':core')
-      compile 'org.apache.commons:commons-lang3:3.4'
-      compile 'org.apache.logging.log4j:log4j-core:2.6.2'
+	  	compile files(fileTree(dir: 'lib', includes: ['*.jar']))
+      	compile project(':core')
+      	compile 'org.apache.commons:commons-lang3:3.4'
+      	compile 'org.apache.logging.log4j:log4j-core:2.6.2'
 }
 
 jar {
